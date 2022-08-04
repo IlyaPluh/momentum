@@ -1,9 +1,10 @@
 const time = document.querySelector('.time');
-const date = new Date();
-const currentTime = date.toLocaleTimeString();
+const date = document.querySelector('.date');
+const options = {weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC'};
 
 function showTime() {
-    time.textContent = currentTime;
+    time.textContent = new Date().toLocaleTimeString();
+    date.textContent = new Date().toLocaleDateString('ru-RU', options);
     setTimeout(showTime, 1000);
   }
   showTime();
