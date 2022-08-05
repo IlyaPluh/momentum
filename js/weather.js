@@ -21,7 +21,7 @@ try {
 }
   }
 
-setTimeout(getWeather, 200)
+setTimeout(getWeather, 500)
 city.addEventListener('change', getWeather)
 
 function setLocalStorage() {
