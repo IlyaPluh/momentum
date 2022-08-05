@@ -1,7 +1,7 @@
 const greetingtext = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 
-function getTimeOfDay() {
+const getTimeOfDay = () => {
     let hour = new Date().getHours();
     let timeOfDay = ''
     if (hour >= 6 && hour < 12) timeOfDay = "Доброе утро"
