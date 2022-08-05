@@ -1,4 +1,11 @@
-let bgNum = Math.floor(Math.random() * (21 - 10)) + 10;
+const getRandomNum = () => {
+    let RandomNum = Math.floor(Math.random() * (21 - 1)) + 1;
+    RandomNum = RandomNum.toString().padStart(2, 0);
+    return RandomNum;
+}
+
+let bgNum = getRandomNum()
+
 const setBg = () => {
     let hour = new Date().getHours();
     let timeOfDay = ''
@@ -7,24 +14,27 @@ const setBg = () => {
     if (hour >= 18) timeOfDay = "evening"
     if (hour < 6) timeOfDay = "night"
     const img = new Image();
-    img.src = `https://raw.githubusercontent.com/rolling-scopes-school/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`
+    img.src = `https://raw.githubusercontent.com/IlyaPluh/stage1-tasks/assets/images/${timeOfDay}/${bgNum}.jpg`
     img.onload = () => {      
     document.body.style.backgroundImage = `url(${img.src})`;
 }}
 setBg()
 
-const slideNext = document.querySelector('.slide-next');
 const getSlideNext = () => {
-    bgNum +=1
-    if (bgNum > 20) bgNum = 10
+    bgNum = +bgNum + 1
+    if (bgNum > 20) bgNum = 1
+    bgNum = bgNum.toString().padStart(2, 0);
     setBg()
 }
-slideNext.addEventListener('click', getSlideNext)
 
-const slidePrev = document.querySelector('.slide-prev');
 const getSlidePrev = () => {
-    bgNum -=1
-    if (bgNum < 10) bgNum = 20
+    bgNum = +bgNum - 1
+    if (bgNum < 1) bgNum = 20
+    bgNum = bgNum.toString().padStart(2, 0);
     setBg()
 }
+
+const slideNext = document.querySelector('.slide-next');
+slideNext.addEventListener('click', getSlideNext)
+const slidePrev = document.querySelector('.slide-prev');
 slidePrev.addEventListener('click', getSlidePrev)
