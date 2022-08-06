@@ -3,8 +3,6 @@ const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
 const city = document.querySelector('.city');
 
-window.addEventListener('load', getLocalStorage)
-
 async function getWeather() {
 try {
     const url = `https://api.openweathermap.org/data/2.5/weather?q=${city.value}&lang=ru&appid=64ce87003c2eeed860b02b93f2accf60&units=metric`;
@@ -21,7 +19,7 @@ try {
 }
   }
 
-setTimeout(getWeather, 500)
+setTimeout(getWeather, 300)
 
 city.addEventListener('change', getWeather)
 
@@ -35,3 +33,5 @@ function setLocalStorage() {
         city.value = localStorage.getItem('city');
     }
   }
+
+  window.addEventListener('load', getLocalStorage)
