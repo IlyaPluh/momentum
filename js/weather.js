@@ -21,7 +21,7 @@ try {
   }
 
 //getWeather()
-setTimeout(getWeather, 500)
+setTimeout(getWeather, 400)
 
 city.addEventListener('change', getWeather)
 

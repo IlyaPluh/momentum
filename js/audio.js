@@ -7,7 +7,7 @@ const audio = new Audio();
 let playNum = 0
 const nextbutton = document.querySelector('.play-next');
 const prevbutton = document.querySelector('.play-prev');
-
+const audioPlayer = document.querySelector(".audio-player");
 
 playList.forEach(el => {
     const li = document.createElement('li');
@@ -66,6 +66,8 @@ const playPrev = () => {
   audio.play();
 }
 
+audio.addEventListener('ended', playNext)
+
 playbutton.addEventListener('click', play)
 nextbutton.addEventListener('click', playNext)
 prevbutton.addEventListener('click', playPrev)
@@ -77,3 +79,44 @@ playitem.forEach(el => {
     play()
   })
 })
+
+//click on timeline to skip around
+const timeline = audioPlayer.querySelector(".timeline");
+timeline.addEventListener("click", e => {
+  const timelineWidth = window.getComputedStyle(timeline).width;
+  const timeToSeek = e.offsetX / parseInt(timelineWidth) * audio.duration;
+  audio.currentTime = timeToSeek;
+}, false);
+
+//turn 128 seconds into 2:08
+function getTimeCodeFromNum(num) {
+  let seconds = parseInt(num);
+  let minutes = parseInt(seconds / 60);
+  seconds -= minutes * 60;
+  const hours = parseInt(minutes / 60);
+  minutes -= hours * 60;
+
+  if (hours === 0) return `${minutes}:${String(seconds % 60).padStart(2, 0)}`;
+  return `${String(hours).padStart(2, 0)}:${minutes}:${String(
+    seconds % 60
+  ).padStart(2, 0)}`;
+}
+
+audio.addEventListener(
+  "loadeddata",
+  () => {
+    audioPlayer.querySelector(".timesound .length").textContent = getTimeCodeFromNum(
+      audio.duration
+    );
+  },
+  false
+);
+
+//check audio percentage and update time accordingly
+setInterval(() => {
+  const progressBar = audioPlayer.querySelector(".progress");
+  progressBar.style.width = audio.currentTime / audio.duration * 100 + "%";
+  audioPlayer.querySelector(".timesound .current").textContent = getTimeCodeFromNum(
+    audio.currentTime
+  );
+}, 500);

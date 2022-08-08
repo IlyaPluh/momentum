@@ -36,7 +36,7 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 120px;
-  margin-bottom: 28px;
+  margin-bottom: 20px;
 }
 
 .play-list {
@@ -290,6 +290,40 @@ body {
   width: 70vh;
 }
 
+.audio-player {
+  /* height: 50px;*/
+  width: 130px; 
+  background: #444;
+  box-shadow: 0 0 20px 0 #000a;
+  font-family: arial;
+  color: white;
+  font-size: 0.75em;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 6px auto;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+  .timeline {
+    background: white;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 2px 10px 0 #0008;
+  }
+    .progress {
+      background: coral;
+      width: 0%;
+      height: 100%;
+      transition: 0.25s;
+    }
+    .timesound {
+      display: flex;
+      padding: 2px; 
+      justify-content: center;     
+    }
+    
+
 .rs {
   background-image: url(../assets/svg/rs_school_js.svg);
 }
@@ -320,6 +354,17 @@ body {
 
   .name {
     font-size: 32px;
+    padding: 5px;
+  }
+
+  .date {
+    min-height: 26px;
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 350px) {
+  .header {
     padding: 5px;
   }
 }

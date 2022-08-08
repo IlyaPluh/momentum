@@ -1,17 +1,23 @@
+import greetingTranslation from './greetingTranslation.js';
+console.log(greetingTranslation);
 const greetingtext = document.querySelector('.greeting');
 const name = document.querySelector('.name');
 
 const getTimeOfDay = () => {
     let hour = new Date().getHours();
     let timeOfDay = ''
-    if (hour >= 6 && hour < 12) timeOfDay = "Доброе утро"
-    if (hour >= 12 && hour < 18) timeOfDay = "Добрый день"
-    if (hour >= 18) timeOfDay = "Добрый вечер"
-    if (hour < 6) timeOfDay = "Доброй ночи"
+    if (hour >= 6 && hour < 12) timeOfDay = "Доброе утро, "
+    if (hour >= 12 && hour < 18) timeOfDay = "Добрый день, "
+    if (hour >= 18) timeOfDay = "Добрый вечер, "
+    if (hour < 6) timeOfDay = "Доброй ночи, "
     greetingtext.textContent = timeOfDay;
     setTimeout(getTimeOfDay, 1000);
   }
   getTimeOfDay();
+
+  name.addEventListener('click', () => {
+    name.value = ''
+  })
 
   function setLocalStorage() {
     localStorage.setItem('name', name.value);

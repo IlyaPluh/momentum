@@ -16,6 +16,16 @@
         <button class="play player-icon"></button>
         <button class="play-next player-icon"></button>
       </div>
+      <div class="audio-player">
+        <div class="timeline">
+          <div class="progress"></div>
+        </div>
+        <div class="timesound">
+          <div class="current">0:00</div>
+          <div class="divider">/</div>
+          <div class="length"></div>
+        </div>
+      </div>
       <ul class="play-list"></ul>
     </div>
     <div class="weather">
@@ -39,7 +49,7 @@
     <date class="date"></date>
     <div class="greeting-container">
       <span class="greeting"></span>
-      <input type="text" class="name" />
+      <input type="text" value="Введите имя" class="name" />
     </div>
   </main>
   <footer class="footer">
@@ -63,7 +73,7 @@
   <script src="js/citata.js"></script>
   <script src="js/backgroundimage.js"></script>
   <script src="js/showtime.js"></script>
-  <script src="js/showgreeting.js"></script>
+  <script type="module" src="js/showgreeting.js"></script>
   <script type="module" src="js/audio.js"></script>
 </body>
 </html>
