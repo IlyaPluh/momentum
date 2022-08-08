@@ -57,6 +57,10 @@ body {
   opacity: 1;
 }
 
+.playitem {
+  opacity: 1;
+}
+
 .play-item::before {
   content: "\2713";  
   position: absolute;
@@ -295,6 +299,9 @@ body {
 }
 .quoteauthor {
   margin-bottom: 30px;
+}
+.temperature {
+  margin-right: 5px;
 }
 @media (max-width: 768px) {
   .time {

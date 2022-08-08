@@ -1,3 +1,4 @@
+window.addEventListener('load', getLocalStorage)
 const weatherIcon = document.querySelector('.weather-icon');
 const temperature = document.querySelector('.temperature');
 const weatherDescription = document.querySelector('.weather-description');
@@ -14,24 +15,23 @@ try {
     weatherDescription.textContent = data.weather[0].description;
 } catch (err) {
     alert("Город введен неверно")
-    city.value = 'Минск'
+    city.value = localStorage.getItem('city')
     getWeather()
 }
   }
 
-setTimeout(getWeather, 300)
+//getWeather()
+setTimeout(getWeather, 500)
 
 city.addEventListener('change', getWeather)
 
 function setLocalStorage() {
     localStorage.setItem('city', city.value);
   }
-  window.addEventListener('beforeunload', setLocalStorage)
+window.addEventListener('beforeunload', setLocalStorage)
 
   function getLocalStorage() {
     if(localStorage.getItem('city')) {
         city.value = localStorage.getItem('city');
     }
   }
-
-  window.addEventListener('load', getLocalStorage)
