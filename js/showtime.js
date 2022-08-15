@@ -13,7 +13,8 @@ const showTime = (lang) => {
     date.textContent = new Date().toLocaleDateString(lang, options);
   }
   showTime('ru-RU');
-  localStorage.getItem('language') === 'en-EN' ? showTime('en-EN') : showTime('ru-RU')
+  
+  localStorage.getItem('language') === 'en' ? showTime('en-EN') : showTime('ru-RU')
 
   language.addEventListener('change', (event) => {
     if (event.target.value === 'ru') {
